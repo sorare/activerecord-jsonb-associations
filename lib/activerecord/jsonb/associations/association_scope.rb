@@ -8,9 +8,9 @@ module ActiveRecord
           return super unless reflection
 
           table = owner_reflection.aliased_table
-          join_keys = owner_reflection.join_keys
-          key = join_keys.key
-          value = transform_value(owner[join_keys.foreign_key])
+          key = owner_reflection.join_primary_key
+          foreign_key = owner_reflection.join_foreign_key
+          value = transform_value(owner[foreign_key])
 
           if reflection.options.key?(:foreign_store)
             apply_jsonb_equality(
