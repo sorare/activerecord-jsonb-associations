@@ -20,7 +20,7 @@ module ActiveRecord
             foreign_key = reflection.foreign_key.to_s
 
             mixin.class_eval <<-CODE, __FILE__, __LINE__ + 1
-              if method_defined?(foreign_key)
+              if method_defined?(:foreign_key)
                 raise ActiveRecord::JSONB::Associations::
                         ConflictingAssociation,
                           "Association with foreign key :#{foreign_key} already "\
