@@ -15,9 +15,9 @@ require 'activerecord/jsonb/associations/preloader/has_many'
 require 'activerecord/jsonb/associations/join_dependency/join_association'
 require 'activerecord/jsonb/connection_adapters/reference_definition'
 
-module ActiveRecord #:nodoc:
-  module JSONB #:nodoc:
-    module Associations #:nodoc:
+module ActiveRecord # :nodoc:
+  module JSONB # :nodoc:
+    module Associations # :nodoc:
       class ConflictingAssociation < StandardError; end
     end
   end
@@ -65,9 +65,9 @@ ActiveSupport.on_load :active_record do
     ActiveRecord::JSONB::Associations::Preloader::Association
   )
 
-  # ::ActiveRecord::Associations::Preloader::HasMany.prepend(
-  #   ActiveRecord::JSONB::Associations::Preloader::HasMany
-  # )
+  ::ActiveRecord::Associations::Preloader::Association::LoaderQuery.prepend(
+    ActiveRecord::JSONB::Associations::Preloader::Association::LoaderQuery
+  )
 
   ::ActiveRecord::Associations::JoinDependency::JoinAssociation.prepend(
     ActiveRecord::JSONB::Associations::JoinDependency::JoinAssociation
